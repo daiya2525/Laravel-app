@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ContactFormController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,9 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
+
+// Route::resource('contacts', ContactFormController::class);
+Route::get('contacts', [ContactFormController::class, 'index'])->name('contacts.index');
 
 Route::get('/', function () {
     return view('welcome');
