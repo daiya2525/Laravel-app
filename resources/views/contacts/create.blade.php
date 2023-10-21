@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
-                    <form action="" method="post">
+                    <form action={{ route('contacts.store') }} method="post">
                         @csrf
                         <section class="text-gray-600 body-font relative">
                             <div class="container px-5 mx-auto">
@@ -71,7 +71,7 @@
 
                                         <div class="p-2 w-full">
                                             <label for="age" class="sr-only">年齢</label>
-                                            <select id="age"
+                                            <select id="age" name="age"
                                                 class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
                                                 <option value="">選択してください</option>
                                                 <option value="1">〜19歳</option>

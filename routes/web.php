@@ -18,12 +18,13 @@ use Illuminate\Support\Facades\Route;
 // Route::resource('contacts', ContactFormController::class);
 
 Route::prefix('contacts')->middleware('auth')
-->controller(ContactFormController::class)
-->name('contacts.')
-->group(function() {
-    Route::get('/', 'index')->name('index');
-    Route::get('/create', 'create')->name('create');
-});
+    ->controller(ContactFormController::class)
+    ->name('contacts.')
+    ->group(function () {
+        Route::get('/', 'index')->name('index');
+        Route::get('/create', 'create')->name('create');
+        Route::post('/', 'store')->name('store');
+    });
 
 Route::get('/', function () {
     return view('welcome');
@@ -39,4 +40,4 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
