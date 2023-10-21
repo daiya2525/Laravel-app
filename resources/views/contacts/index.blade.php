@@ -29,6 +29,9 @@
                                     <th
                                         class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
                                         作成日</th>
+                                    <th
+                                        class="px-4 py-3 title-font tracking-wider font-medium text-gray-900 text-sm bg-gray-100">
+                                        詳細</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -39,6 +42,11 @@
                                         <td class="border-t-2 border-gray-200 px-4 py-3">{{ $contact->title }}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3 text-lg">
                                             {{ $contact->created_at }}</td>
+                                        <td class="border-t-2 border-gray-200 px-4 py-3 text-lg">
+                                            <a href='{{ route('contacts.show', ['id' => $contact->id ]) }}'
+                                                class="text-white bg-blue-400 dark:bg-blue-500 hover:opacity-70 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[fit-content] block"
+                                                disabled>詳細を見る</a>
+                                        </td>
                                     </tr>
                                 @endforeach
                             </tbody>
