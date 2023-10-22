@@ -52,6 +52,10 @@
                             </tbody>
                         </table>
                     </div>
+
+                    <div class="mt-[60px]">
+                        {{ $contacts->links() }}
+                    </div>
                 </div>
             </div>
         </div>
