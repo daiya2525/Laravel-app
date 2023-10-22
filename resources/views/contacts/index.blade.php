@@ -44,8 +44,8 @@
                                             {{ $contact->created_at }}</td>
                                         <td class="border-t-2 border-gray-200 px-4 py-3 text-lg">
                                             <a href='{{ route('contacts.show', ['id' => $contact->id ]) }}'
-                                                class="text-white bg-blue-400 dark:bg-blue-500 hover:opacity-70 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[fit-content] block"
-                                                disabled>詳細を見る</a>
+                                                class="text-white whitespace-nowrap bg-blue-400 dark:bg-blue-500 hover:opacity-70 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[fit-content] block"
+                                                disabled>詳細</a>
                                         </td>
                                     </tr>
                                 @endforeach
