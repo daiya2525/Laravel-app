@@ -9,8 +9,8 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <section class="text-gray-600 body-font relative">
 
+                    <section class="text-gray-600 body-font relative">
                         <div class="container px-5 mx-auto">
                             <div class="lg:w-1/2 md:w-2/3 mx-auto">
                                 <div class="flex flex-wrap -m-2">
@@ -87,18 +87,37 @@
                                 </div>
 
                                 <form method="get" action="{{ route('contacts.edit', ['id' => $contact->id]) }}">
+                                    @csrf
                                     <div class="p-2 w-full">
                                         <button
                                             class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg mt-[40px]">編集する</button>
                                     </div>
                                 </form>
+
+                                <form method="post" id='delete_{{ $contact->id }}'
+                                    action="{{ route('contacts.destroy', ['id' => $contact->id]) }}">
+                                    @csrf
+                                    <div class="p-2 w-full">
+                                        <a href='#' data-id='{{ $contact->id }}' onClick="deletePost(this)"
+                                            class="flex mx-auto text-white bg-red-500 border-0 py-2 px-8 focus:outline-none hover:bg-red-600 rounded text-lg w-[fit-content]">削除する</a>
+                                    </div>
+                                </form>
                             </div>
                         </div>
-                </div>
-                </section>
+                    </section>
 
+                </div>
             </div>
         </div>
     </div>
-    </div>
+
+    {{-- 確認メッセージ --}}
+    <script>
+        function deletePost(e) {
+            'use strict'
+            if (confirm('本当に削除してもいいですか？')) {
+                document.getElementById('delete_' + e.dataset.id).submit()
+            }
+        }
+    </script>
 </x-app-layout>
