@@ -10,7 +10,7 @@
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
 
-                    <form action={{ route('contacts.store') }} method="post">
+                    <form action={{ route('contacts.update', ['id' => $contact->id ]) }} method="post">
                         @csrf
                         <section class="text-gray-600 body-font relative">
                             <div class="container px-5 mx-auto">
