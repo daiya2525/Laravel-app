@@ -12,6 +12,7 @@
 
                     <form action={{ route('contacts.store') }} method="post">
                         @csrf
+
                         <section class="text-gray-600 body-font relative">
                             <div class="container px-5 mx-auto">
                                 <div class="lg:w-1/2 md:w-2/3 mx-auto">
@@ -19,70 +20,99 @@
                                         <div class="p-2 w-full">
                                             <div class="relative">
                                                 <label for="name" class="leading-7 text-sm text-gray-600">氏名</label>
-                                                <input type="text" id="name" name="name"
+                                                <input type="text" id="name" name="name" value="{{ old('name') }}"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             </div>
+                                            @if ($errors->has('name'))
+                                                @foreach ($errors->get('name') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
                                                 <label for="text" class="leading-7 text-sm text-gray-600">件名</label>
-                                                <input type="text" id="title" name="title"
+                                                <input type="text" id="title" name="title" value="{{ old('title') }}"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             </div>
+                                            @if ($errors->has('title'))
+                                                @foreach ($errors->get('title') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
                                                 <label for="email"
                                                     class="leading-7 text-sm text-gray-600">メールアドレス</label>
-                                                <input type="text" id="email" name="email"
+                                                <input type="text" id="email" name="email" value="{{ old('email') }}"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             </div>
+                                            @if ($errors->has('email'))
+                                                @foreach ($errors->get('email') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
                                                 <label for="url"
                                                     class="leading-7 text-sm text-gray-600">ホームページ</label>
-                                                <input type="text" id="url" name="url"
+                                                <input type="text" id="url" name="url" value="{{ old('url') }}"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
                                             </div>
+                                            @if ($errors->has('url'))
+                                                @foreach ($errors->get('url') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="p-2 w-full">
                                             <p class="text-sm text-gray-600">性別</p>
                                             <div
                                                 class="flex items-center pl-4 border border-gray-200 w-[70%] rounded dark:border-gray-700">
-                                                <input id="gender-1" type="radio" value="0" name="gender"
+                                                <input id="gender-1" type="radio" value="0" name="gender" {{ old('gender') == 0 ? 'checked' : '' }}
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="gender-1"
                                                     class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">男性</label>
                                             </div>
                                             <div
                                                 class="flex items-center pl-4 border border-gray-200 w-[70%] rounded dark:border-gray-700 mt-4">
-                                                <input checked id="gender-2" type="radio" value="1"
+                                                <input id="gender-2" type="radio" value="1" {{ old('gender') == 1 ? 'checked' : '' }}
                                                     name="gender"
                                                     class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
                                                 <label for="gender-2"
                                                     class="w-full py-4 ml-2 text-sm font-medium text-gray-900 dark:text-gray-300">女性</label>
                                             </div>
+                                            @if ($errors->has('gender'))
+                                                @foreach ($errors->get('gender') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="p-2 w-full">
                                             <label for="age" class="sr-only">年齢</label>
                                             <select id="age" name="age"
                                                 class="block py-2.5 px-0 w-full text-sm text-gray-500 bg-transparent border-0 border-b-2 border-gray-200 appearance-none dark:text-gray-400 dark:border-gray-700 focus:outline-none focus:ring-0 focus:border-gray-200 peer">
-                                                <option value="">選択してください</option>
-                                                <option value="1">〜19歳</option>
-                                                <option value="2">20歳〜29歳</option>
-                                                <option value="3">30歳〜39歳</option>
-                                                <option value="4">40歳〜49歳</option>
-                                                <option value="5">50歳〜59歳</option>
-                                                <option value="6">60歳〜</option>
+                                                <option value="" disabled selected>選択してください</option>
+                                                <option value="1" {{ old('age') == 1 ? 'selected' : '' }}>〜19歳</option>
+                                                <option value="2" {{ old('age') == 2 ? 'selected' : '' }}>20歳〜29歳</option>
+                                                <option value="3" {{ old('age') == 3 ? 'selected' : '' }}>30歳〜39歳</option>
+                                                <option value="4" {{ old('age') == 4 ? 'selected' : '' }}>40歳〜49歳</option>
+                                                <option value="5" {{ old('age') == 5 ? 'selected' : '' }}>50歳〜59歳</option>
+                                                <option value="6" {{ old('age') == 6 ? 'selected' : '' }}>60歳〜</option>
                                             </select>
+                                            @if ($errors->has('age'))
+                                                @foreach ($errors->get('age') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
-
 
                                         <div class="p-2 w-full">
                                             <div class="relative">
@@ -91,6 +121,11 @@
                                                 <textarea id="contact" name="contact"
                                                     class="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"></textarea>
                                             </div>
+                                            @if ($errors->has('contact'))
+                                                @foreach ($errors->get('contact') as $message)
+                                                    <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                                @endforeach
+                                            @endif
                                         </div>
 
                                         <div class="inline-flex items-center">
@@ -109,16 +144,23 @@
                                                     </svg>
                                                 </div>
                                             </label>
-                                            <label class="mt-px font-light text-gray-700 cursor-pointer select-none"
+                                            <label class="font-light text-gray-700 cursor-pointer select-none"
                                                 for="caution">
                                                 注意事項に同意する
                                             </label>
                                         </div>
 
-                                        <div class="p-2 w-full">
+                                        @if ($errors->has('caution'))
+                                            @foreach ($errors->get('caution' ) as $message)
+                                                <p class="text-sm mt-[5px] text-red-700">{{ $message }}</p>
+                                            @endforeach
+                                        @endif
+
+                                        <div class="p-2 w-full mt-[40px]">
                                             <button
                                                 class="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">新規登録する</button>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
