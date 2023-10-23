@@ -13,6 +13,11 @@
                         class="text-white bg-blue-400 dark:bg-blue-500 hover:opacity-70 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-[fit-content] ml-auto block"
                         disabled>新規作成</a>
 
+                    <form action="{{ route('contacts.index') }}" method="get" class="mt-4">
+                        <input type="text" name="search" id="search" placeholder="検索" value="{{ request('search') }}" class="text-[16px] text-[#444444]">
+                        <button class=" text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg">検索する</button>
+                    </form>
+
                     <div class="w-full mx-auto overflow-auto">
                         <table class="table-auto w-full text-left whitespace-no-wrap mt-[40px]">
                             <thead>
